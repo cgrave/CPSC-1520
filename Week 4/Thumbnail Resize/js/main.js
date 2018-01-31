@@ -16,7 +16,14 @@ var imgActive = document.querySelector("div.thumbnails");
 
 function handleFeatureClick(evt) {
 	var size;
+
+
+
 	if(evt.target.nodeName == "LI"){
+					// if active?
+		if(!evt.target.classList.contains("active")){
+			
+
 		// get size for the list item
 
 		size = evt.target.className.split("-")[1];
@@ -24,6 +31,13 @@ function handleFeatureClick(evt) {
 
 		// get the className of the div
 		imgActive.className = "thumbnails " + size;
+
+		// remove current active
+		document.querySelector(".active").classList.remove("active");
+
+		// add active to target
+		evt.target.classList.add("active");
+		}
 	}
 	
 //.thumbnail.classList.contains("active");
@@ -33,4 +47,5 @@ function handleFeatureClick(evt) {
 
 // event listener
 activeLink.addEventListener('click', handleFeatureClick);
+
 
