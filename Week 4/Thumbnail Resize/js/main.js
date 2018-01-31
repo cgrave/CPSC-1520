@@ -3,19 +3,34 @@
 // CSS rule to  modify the display the of hte thumbnail images.  In addition to this,
 // the clicked button should be made active (i.e. add the active class).
 
+//
 
-//select the links
-//change active to the one clicked on
-//when that active is clicked on then change the image sizes
+// select the links
+// change active to the one clicked on
+// when that active is clicked on then change the image sizes
 
-var activeLink = document.querySelector('ul.thumbnail-sizes');
-function handleFeatureClick() {
-	var imgActive = document.querySelector("ul.thumbnail-sizes");
-	if(imgActive.classList.contains("active")){
-		console.log("hello");
+var activeLink = document.querySelector("ul.thumbnail-sizes");
+var imgActive = document.querySelector("div.thumbnails");
+
+//s.split("-") [1]
+
+function handleFeatureClick(evt) {
+	var size;
+	if(evt.target.nodeName == "LI"){
+		// get size for the list item
+
+		size = evt.target.className.split("-")[1];
+		// couldnt also use replace, or substring ..
+
+		// get the className of the div
+		imgActive.className = "thumbnails " + size;
 	}
 	
-//thumbnail-size.classList.contains("active");
+//.thumbnail.classList.contains("active");
+
 }
-//event listener
+
+
+// event listener
 activeLink.addEventListener('click', handleFeatureClick);
+
