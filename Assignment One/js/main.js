@@ -1,9 +1,7 @@
-// Enter your JavaScript for the solution here...
 document.querySelector('form').addEventListener( 'submit', function (evt) {
 	var form = evt.target;
 	var tag = form.elements.tag;
-	console.log("Hello");
-var error = document.querySelector('p.error');
+	var error = document.querySelector('p.error');
 
 	if(tag.value.trim() == ''){
 		error.classList.remove('hidden');
@@ -14,8 +12,14 @@ var error = document.querySelector('p.error');
 		error.innerHTML = '<p>Tags cannot contain spaces</p>';
 	}
 	else{
-		document.querySelector('p.feature.tags ').innerHTML += ' #' + tag.value;
-		tag.value = '';
+		document.querySelector('p.tags ').innerHTML += ' #' + tag.value;
+		// the dataset of tasg is being changed by the innerHTML plus continueing adding the tag.value
+		// while the tags are being submitted, add to the selected image tags
+			// var s = document.querySelector('img ').addEventListener("click", function(evt){
+			// s.dataset.tags += '' + tag.value;
+			// evt.preventDefault();
+			// })
+		// how do i know which image has been selcted?
 		error.classList.add('hidden');
 		error.innerHTML = '';
 	}
@@ -25,3 +29,21 @@ var error = document.querySelector('p.error');
 
 
 
+
+document.querySelector("ul.thumbnails").addEventListener("click", function(evt){
+	var image = evt.target; // this is what selects the image that has been clicked on
+
+	// if (image.tagName == 'LI') {
+		
+	// 	// update the active li
+	// 	document.querySelector('li.active').classList.remove('active');
+	// 	target.classList.add('active');
+
+	// 	// update the thumbnails className
+	// 	document.querySelector('div.thumbnails').className = 'thumbnails ' + target.className[11] + target.className[12];
+	// }
+
+	image.innerHTML = "";
+	evt.preventDefault();
+
+})
