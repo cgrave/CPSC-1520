@@ -16,20 +16,19 @@ document.querySelector('form').addEventListener( 'submit', function (evt) {
 		
 		//three choices
 		if(document.querySelector(".editor img").alt == "Athens"){
-			document.querySelectorAll(".thumbnails img")[0].dataset.tags += "#" + tag.value;
+			document.querySelectorAll(".thumbnails img")[0].dataset.tags += " #" + tag.value;
 		}
 		else if(document.querySelector(".editor img").alt == "Barcelona"){
-			document.querySelectorAll(".thumbnails img")[1].dataset.tags += "#" + tag.value;
+			document.querySelectorAll(".thumbnails img")[1].dataset.tags += " #" + tag.value;
 		}
 		else{
-			document.querySelectorAll(".thumbnails img")[2].dataset.tags += "#" + tag.value;
-		}
-		
-		// how do i know which image has been selcted?
+			document.querySelectorAll(".thumbnails img")[2].dataset.tags += " #" + tag.value;
+		}// gets the correct image 
+
 		error.classList.add('hidden');
 		error.innerHTML = '';
 	}
-
+	tag.value = "";
  	 evt.preventDefault();
 });
 
@@ -38,7 +37,10 @@ document.querySelector('form').addEventListener( 'submit', function (evt) {
 document.querySelector("ul.thumbnails").addEventListener("click", function(evt){
 	var image = evt.target; // this is what selects the image that has been clicked on
 	var textme = image.alt;
-	document.querySelector('p.tags ').innerHTML = "";
+
+	
+
+	document.querySelector('p.tags ').innerHTML = image.dataset.tags;
 // ABOVE	 changes the i
 	if(textme === image.alt){
 		console.log("if")
