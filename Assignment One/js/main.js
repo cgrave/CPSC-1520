@@ -13,12 +13,18 @@ document.querySelector('form').addEventListener( 'submit', function (evt) {
 	}
 	else{
 		document.querySelector('p.tags ').innerHTML += ' #' + tag.value;
-		// the dataset of tasg is being changed by the innerHTML plus continueing adding the tag.value
-		// while the tags are being submitted, add to the selected image tags
-			// var s = document.querySelector('img ').addEventListener("click", function(evt){
-			// s.dataset.tags += '' + tag.value;
-			// evt.preventDefault();
-			// })
+		
+		//three choices
+		if(document.querySelector(".editor img").alt == "Athens"){
+			document.querySelectorAll(".thumbnails img")[0].dataset.tags += "#" + tag.value;
+		}
+		else if(document.querySelector(".editor img").alt == "Barcelona"){
+			document.querySelectorAll(".thumbnails img")[1].dataset.tags += "#" + tag.value;
+		}
+		else{
+			document.querySelectorAll(".thumbnails img")[2].dataset.tags += "#" + tag.value;
+		}
+		
 		// how do i know which image has been selcted?
 		error.classList.add('hidden');
 		error.innerHTML = '';
@@ -29,17 +35,18 @@ document.querySelector('form').addEventListener( 'submit', function (evt) {
 
 
 
-
 document.querySelector("ul.thumbnails").addEventListener("click", function(evt){
 	var image = evt.target; // this is what selects the image that has been clicked on
 	var textme = image.alt;
-	
+	document.querySelector('p.tags ').innerHTML = "";
 // ABOVE	 changes the i
 	if(textme === image.alt){
 		console.log("if")
+		document.querySelector(".editor img").alt = textme;
 		textme = image.alt + ".png"
 		var titlevar = image.title;
 		document.querySelector(".editor img").src = "img/" + textme;
+		
 		document.querySelector("h2.title").innerHTML = titlevar;
 
 	}
@@ -51,3 +58,6 @@ document.querySelector("ul.thumbnails").addEventListener("click", function(evt){
 	evt.preventDefault();
 
 })
+
+
+//TODO: DIsplay tags again when change
