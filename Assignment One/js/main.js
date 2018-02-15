@@ -32,18 +32,22 @@ document.querySelector('form').addEventListener( 'submit', function (evt) {
 
 document.querySelector("ul.thumbnails").addEventListener("click", function(evt){
 	var image = evt.target; // this is what selects the image that has been clicked on
+	var textme = image.alt;
+	
+// ABOVE	 changes the i
+	if(textme === image.alt){
+		console.log("if")
+		textme = image.alt + ".png"
+		var titlevar = image.title;
+		document.querySelector(".editor img").src = "img/" + textme;
+		document.querySelector("h2.title").innerHTML = titlevar;
 
-	// if (image.tagName == 'LI') {
+	}
+	else{
+		console.log("Else")
 		
-	// 	// update the active li
-	// 	document.querySelector('li.active').classList.remove('active');
-	// 	target.classList.add('active');
+	}
 
-	// 	// update the thumbnails className
-	// 	document.querySelector('div.thumbnails').className = 'thumbnails ' + target.className[11] + target.className[12];
-	// }
-
-	image.innerHTML = "";
 	evt.preventDefault();
 
 })
