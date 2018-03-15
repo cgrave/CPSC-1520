@@ -1,33 +1,37 @@
 // Enter your JavaScript for the solution here...
 var ImgArray = document.querySelectorAll('.thumb-display');
 var counter = 0;
-//number one is 'selected'
-//ImgArray[0].lastElementChild.innerText = '#image';
-//the above changes the text of the tag
+var textarea = document.querySelector('.frm-control');
+var str = textarea;
+var aReset = document.querySelector('.reset');
 
-// function FUNCTIONNAME(argument) {
-// 	// body...
-// }
+textarea.addEventListener('input', changeSearch);
 
-//once filter is activated
-//find the filter input and check if anything 
-//from the nodelists are similar
-//for loop
+function changeSearch(){
+	str = textarea.value; //this works to get the values as its being typed
+
+	//var str is string that is entered that then goes into for loop to check all p
+	for(counter = 0; counter < ImgArray.length; counter++){
+		var pho = ImgArray[counter].lastElementChild.innerText;
+		if(pho.includes(str.trim())){
+			ImgArray[counter].classList.remove('hidden');
+		}
+		else{
+			ImgArray[counter].classList.add('hidden');
+		}
+	//TODO: THIS NEEDS TO ONLY SHOW UP IF THERE IS ANY REAL TEXT PRESENT. NOT
+	//JUST IMMEDIATELY AFTER IT EVERY TIME!!
+	aReset.classList.remove('hidden');
+	}
 
 
-for(counter = 0; counter < ImgArray.length; counter++){
-var str = 'moun';
-var pho = ImgArray[counter].lastElementChild.innerText;
-var indexWord = pho.indexOf(str);
-pho.substring(indexWord,(indexWord+str.length))
-//indexWord = 
-if(indexWord == -1){
-	console.log('Does not contain');
-	//ImgArray[counter].style.display = 'hidden';
+aReset.addEventListener('click', resetbuttons);
 }
-else{
-	//ImgArray[counter].style.display = 'block';
+
+function resetbuttons() {
+	aReset.classList.add('hidden');
+	textarea.value = '';
+	for(counter = 0; counter < ImgArray.length; counter++){
+		ImgArray[counter].classList.remove('hidden');
+	}
 }
-var meee = pho.substring(indexWord,(indexWord+str.length));
-}
-// the word in substring
