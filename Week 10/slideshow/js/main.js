@@ -79,3 +79,23 @@ document.addEventListener('keydown', function(evt) {
             break;
     }
 });
+
+document.querySelector('.carousel>img').addEventListener('mouseover', mouseGallery);
+
+function mouseGallery(evt){
+    var target = evt.target;
+    console.log('over me');
+    clearInterval(slideshowInterval);
+}
+
+document.querySelector('.carousel>img').addEventListener('mouseleave', mouseGalleryStart);
+
+function mouseGalleryStart(evt){
+    console.log('out me');
+    slideshowInterval = setInterval(function() {
+    currentImg +=1;
+    if(currentImg == images.length){
+        currentImg = 0;
+    }
+    updateSlide(currentImg)
+}, 3000);}
